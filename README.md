@@ -1,4 +1,6 @@
-# convex_hull
+# ConvexHull
+
+[![Build Status](https://travis-ci.org/geocrystal/convex_hull.svg?branch=master)](https://travis-ci.org/geocrystal/convex_hull)
 
 TODO: Write a description here
 
