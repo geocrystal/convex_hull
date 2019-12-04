@@ -25,8 +25,6 @@ module ConvexHull
         end
       end
 
-      return points if points.size <= 3
-
       lower = Array(Point).new
 
       points.each do |p|
