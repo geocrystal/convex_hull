@@ -5,11 +5,25 @@ module ConvexHull
     def initialize(points : Array(Tuple(Int32, Int32)))
       raise "There must be at least 3 points" if points.size < 3
 
-      @points = points.map { |p| Point.new(p[0], p[1]) }
+      @points = points.uniq.map { |p| Point.new(p[0], p[1]) }
     end
 
     def convex_hull
-      points.sort! { |a, b| a.x <=> b.x }
+      points.sort! do |a, b|
+        if a.x > b.x
+          1
+        elsif a.x == b.x
+          if a.y < b.y
+            1
+          elsif a.y == b.y
+            0
+          else
+            -1
+          end
+        else
+          -1
+        end
+      end
 
       return points if points.size <= 3
 

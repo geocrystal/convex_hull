@@ -5,7 +5,7 @@ module ConvexHull
     def initialize(points : Array(Tuple(Int32, Int32)))
       raise "There must be at least 3 points" if points.size < 3
 
-      @points = points.map { |p| Point.new(p[0], p[1]) }
+      @points = points.uniq.map { |p| Point.new(p[0], p[1]) }
     end
 
     def convex_hull
