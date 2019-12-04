@@ -16,7 +16,7 @@ describe ConvexHull::GrahamScan do
       {0, 3}, {0, 0}, {3, 0}, {3, 3},
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
-    jarvis = ConvexHull::GrahamScan.new(points)
-    jarvis.convex_hull.should eq(expected)
+    graham_scan = ConvexHull::GrahamScan.new(points)
+    graham_scan.convex_hull.should eq(expected)
   end
 end
