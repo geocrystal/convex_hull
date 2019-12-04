@@ -3,13 +3,13 @@ module ConvexHull
     getter points : Array(Point)
 
     def initialize(points : Array(Tuple(Int32, Int32)))
-      @points = points.map { |p| Point.new(p[0], p[1]) }
+      raise "There must be at least 3 points" if points.size < 3
+
+      @points = points.uniq.map { |p| Point.new(p[0], p[1]) }.sort
     end
 
     def convex_hull
       n = @points.size
-
-      raise "There must be at least 3 points" if n < 3
 
       hull = [] of Point
 
@@ -22,8 +22,14 @@ module ConvexHull
       q = 0
 
       loop do
+        point = @points[p]
+
+        if hull.size > 1 && orientation(hull[-2], hull[-1], point) == 0
+          hull.pop
+        end
+
         # Add current point to result
-        hull << @points[p]
+        hull << point
 
         # Search for a point 'q' such that orientation(p, x, q) is counterclockwise
         # for all points 'x'.
@@ -46,6 +52,7 @@ module ConvexHull
         break if p == l
       end
 
+      return [] of Point if hull.size < 3
       hull
     end
 
