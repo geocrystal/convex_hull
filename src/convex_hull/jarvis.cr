@@ -13,13 +13,10 @@ module ConvexHull
 
       hull = [] of Point
 
-      l = left_index
-
       # Start from leftmost point, keep moving counterclockwise
       # until reach the start point again. This loop runs O(h)
       # times where h is number of points in result or output.
-      p = l
-      q = 0
+      l = p = q = 0
 
       loop do
         point = @points[p]
@@ -54,23 +51,6 @@ module ConvexHull
 
       return [] of Point if hull.size < 3
       hull
-    end
-
-    # Finding the left most point
-    def left_index
-      minn = 0
-
-      1.upto(@points.size - 1) do |i|
-        if points[i].x < points[minn].x
-          minn = i
-        elsif points[i].x == points[minn].x
-          if points[i].y > points[minn].y
-            minn = i
-          end
-        end
-      end
-
-      minn
     end
 
     def orientation(p : Point, q : Point, r : Point)
