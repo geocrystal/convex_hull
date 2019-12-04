@@ -3,13 +3,13 @@ module ConvexHull
     getter points : Array(Point)
 
     def initialize(points : Array(Tuple(Int32, Int32)))
+      raise "There must be at least 3 points" if points.size < 3
+
       @points = points.map { |p| Point.new(p[0], p[1]) }
     end
 
     def convex_hull
       n = @points.size
-
-      raise "There must be at least 3 points" if n < 3
 
       hull = [] of Point
 
