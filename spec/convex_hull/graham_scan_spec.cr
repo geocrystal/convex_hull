@@ -40,10 +40,10 @@ describe ConvexHull::GrahamScan do
   end
 
   it "should skip colinear from hull" do
-    points = [{1, 1}, {2, 2}, {3, 3}, {4, 4}, {4, 8}]
+    points = [{1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}, {-1, 0}, {-1, 1}, {0, 1}, {0, 0}]
 
     expected = [
-      {1, 1}, {4, 4}, {4, 8},
+      {-1, 1}, {-1, -1}, {1, -1}, {1, 1}
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
     graham_scan = ConvexHull::GrahamScan.new(points)
