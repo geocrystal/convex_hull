@@ -43,7 +43,7 @@ describe ConvexHull::Jarvis do
     points = [{1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}, {-1, 0}, {-1, 1}, {0, 1}, {0, 0}]
 
     expected = [
-      {-1, 1}, {-1, -1}, {1, -1}, {1, 1}
+      {-1, 1}, {-1, -1}, {1, -1}, {1, 1},
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
     jarvis = ConvexHull::Jarvis.new(points)
