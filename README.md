@@ -6,8 +6,8 @@ Crystal implementation of finding the convex hull of a finite set of points in t
 
 Supported method:
 
-- Jarvis’s Algorithm or Wrapping
-- Graham Scan
+- [Gift wrapping algorithm](https://en.wikipedia.org/wiki/Gift_wrapping_algorithm)
+- [Graham scan](https://en.wikipedia.org/wiki/Graham_scan)
 
 ## Installation
 
