@@ -1,5 +1,5 @@
 require "./convex_hull/point"
-require "./convex_hull/jarvis"
+require "./convex_hull/jarvis_march"
 require "./convex_hull/graham_scan"
 
 module ConvexHull

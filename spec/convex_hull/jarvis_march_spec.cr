@@ -1,6 +1,6 @@
 require "../spec_helper"
 
-describe ConvexHull::Jarvis do
+describe ConvexHull::JarvisMarch do
   it "integers" do
     points = [
       {0, 3},
@@ -16,7 +16,7 @@ describe ConvexHull::Jarvis do
       {0, 3}, {0, 0}, {3, 0}, {3, 3},
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
-    jarvis = ConvexHull::Jarvis.new(points)
+    jarvis = ConvexHull::JarvisMarch.new(points)
     jarvis.convex_hull.should eq(expected)
   end
 
@@ -35,7 +35,7 @@ describe ConvexHull::Jarvis do
       {0.0, 3.0}, {0.0, 0.0}, {3.0, 0.0}, {3.0, 3.0},
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
-    jarvis = ConvexHull::Jarvis.new(points)
+    jarvis = ConvexHull::JarvisMarch.new(points)
     jarvis.convex_hull.should eq(expected)
   end
 
@@ -46,7 +46,7 @@ describe ConvexHull::Jarvis do
       {-1, 1}, {-1, -1}, {1, -1}, {1, 1},
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
-    jarvis = ConvexHull::Jarvis.new(points)
+    jarvis = ConvexHull::JarvisMarch.new(points)
     jarvis.convex_hull.should eq(expected)
   end
 
@@ -55,7 +55,7 @@ describe ConvexHull::Jarvis do
 
     expected = [] of ConvexHull::Point
 
-    jarvis = ConvexHull::Jarvis.new(points)
+    jarvis = ConvexHull::JarvisMarch.new(points)
     jarvis.convex_hull.should eq(expected)
   end
 end

@@ -1,5 +1,5 @@
 module ConvexHull
-  class Jarvis
+  class JarvisMarch
     getter points : Array(Point)
 
     def initialize(points : Array(Tuple(Number, Number)))
