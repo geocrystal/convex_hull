@@ -1,5 +1,9 @@
 # ConvexHull
 
+![Crystal CI](https://github.com/geocrystal/convex_hull/workflows/Crystal%20CI/badge.svg)
+[![GitHub release](https://img.shields.io/github/release/geocrystal/convex_hull.svg)](https://github.com/geocrystal/convex_hull/releases)
+[![License](https://img.shields.io/github/license/geocrystal/convex_hull.svg)](https://github.com/geocrystal/convex_hull/blob/master/LICENSE)
+
 Crystal implementation of finding the convex hull of a finite set of points in the plane.
 
 Supported algorithms:
