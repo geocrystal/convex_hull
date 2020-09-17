@@ -1,7 +1,5 @@
 # ConvexHull
 
-[![Build Status](https://travis-ci.org/geocrystal/convex_hull.svg?branch=master)](https://travis-ci.org/geocrystal/convex_hull)
-
 Crystal implementation of finding the convex hull of a finite set of points in the plane.
 
 Supported algorithms:
