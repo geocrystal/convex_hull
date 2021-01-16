@@ -3,7 +3,7 @@ require "./convex_hull/jarvis_march"
 require "./convex_hull/graham_scan"
 
 module ConvexHull
-  VERSION = "0.2.0"
+  VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
 
   alias Number = Int32 | Float32 | Float64
 end
