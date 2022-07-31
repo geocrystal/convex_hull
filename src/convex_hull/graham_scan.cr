@@ -1,7 +1,6 @@
 module ConvexHull
   class GrahamScan < Algorithm
     def convex_hull : Array(ConvexHull::Point)
-      puts "AAAA!"
       lower = Array(Point).new
 
       points.each do |p|
