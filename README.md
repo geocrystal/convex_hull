@@ -23,18 +23,50 @@ Supported algorithms:
 
 2. Run `shards install`
 
-## Usage
+## Computing a Convex Hull
+
+Given X, a set of points in 2-D, the convex hull is the minimum set of points that define a polygon containing all the points of X. If you imagine the points as pegs on a board, you can find the convex hull by surrounding the pegs by a loop of string and then tightening the string until there is no more slack.
+
+The following is an example of a convex hull of 19 points.
+
+![convex hull](/assets/convex.png)
 
 ```crystal
 require "convex_hull"
 
-points = [{0, 3}, {2, 2}, {1, 1}, {2, 1}, {3, 0}, {0, 0}, {3, 3}]
+points = [
+  {-10, 3},
+  {-10, 4},
+  {-7, 8},
+  {-7, 2},
+  {-3, 4},
+  {-2, 2},
+  {7, 3},
+  {9, 5},
+  {9, -7},
+  {5, -10},
+  {7, -8},
+  {5, -4},
+  {5, -5},
+  {4, -6},
+  {2, -7},
+  {1, -8},
+  {-3, -4},
+  {-4, -6},
+  {-9, -5},
+]
 
 graham_scan = ConvexHull::GrahamScan.new(points)
-graham_scan.convex_hull.should eq(expected)
+# => #<ConvexHull::GrahamScan:0x...
+
+graham_scan.to_a
+# => [{-10, 4}, {-10, 3}, {-9, -5}, {5, -10}, {9, -7}, {9, 5}, {-7, 8}]
 
 jarvis_march = ConvexHull::JarvisMarch.new(points)
-jarvis_march.convex_hull.should eq(expected)
+# => #<ConvexHull::JarvisMarch:0x...
+
+jarvis_march.to_a
+# => [{-10, 4}, {-10, 3}, {-9, -5}, {5, -10}, {9, -7}, {9, 5}, {-7, 8}]
 ```
 
 ## Contributing
