@@ -1,14 +1,6 @@
 module ConvexHull
-  class JarvisMarch
-    getter points : Array(Point)
-
-    def initialize(points : Array(Tuple(Number, Number)))
-      raise "There must be at least 3 points" if points.size < 3
-
-      @points = points.uniq.map { |p| Point.new(p[0], p[1]) }.sort
-    end
-
-    def convex_hull
+  class JarvisMarch < Algorithm
+    def convex_hull : Array(ConvexHull::Point)
       n = @points.size
 
       hull = [] of Point
@@ -53,7 +45,7 @@ module ConvexHull
       hull
     end
 
-    def orientation(p : Point, q : Point, r : Point)
+    private def orientation(p : Point, q : Point, r : Point)
       val = (q.y - p.y) * (r.x - q.x) -
             (q.x - p.x) * (r.y - q.y)
 
