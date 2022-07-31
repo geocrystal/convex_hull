@@ -23,7 +23,9 @@ Supported algorithms:
 
 2. Run `shards install`
 
-## Usage
+## Computing a Convex Hull
+
+Given X, a set of points in 2-D, the convex hull is the minimum set of points that define a polygon containing all the points of X. If you imagine the points as pegs on a board, you can find the convex hull by surrounding the pegs by a loop of string and then tightening the string until there is no more slack.
 
 The following is an example of a convex hull of 19 points.
 
