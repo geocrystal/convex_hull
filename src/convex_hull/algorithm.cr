@@ -10,7 +10,7 @@ module ConvexHull
 
       points = points.uniq.map { |p| Point.new(p[0], p[1]) }.sort!
 
-      @convex_hull = compute_convex_hull(points)
+      @convex_hull = convex_hull(points)
     end
 
     def initialize(points : Array(Point))
@@ -18,10 +18,10 @@ module ConvexHull
 
       points = points.sort
 
-      @convex_hull = compute_convex_hull(points)
+      @convex_hull = convex_hull(points)
     end
 
-    private abstract def compute_convex_hull(points) : Array(Point)
+    private abstract def convex_hull(points) : Array(Point)
 
     def each(& : Point ->) : Nil
       @convex_hull.each do |point|

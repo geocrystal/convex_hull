@@ -1,6 +1,6 @@
 module ConvexHull
   class GrahamScan < Algorithm
-    private def compute_convex_hull(points) : Array(Point)
+    private def convex_hull(points) : Array(Point)
       lower = Array(Point).new
 
       points.each do |p|

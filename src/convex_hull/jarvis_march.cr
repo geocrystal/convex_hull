@@ -1,6 +1,6 @@
 module ConvexHull
   class JarvisMarch < Algorithm
-    private def compute_convex_hull(points) : Array(Point)
+    private def convex_hull(points) : Array(Point)
       n = points.size
 
       hull = [] of Point
