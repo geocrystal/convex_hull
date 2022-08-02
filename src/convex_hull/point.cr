@@ -1,5 +1,5 @@
 module ConvexHull
-  struct Point
+  class Point
     include Comparable(self)
 
     getter :x
