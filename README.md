@@ -31,41 +31,53 @@ The following is an example of a convex hull of 19 points.
 
 ![convex hull](/assets/convex.png)
 
+### Instantiate algorithm
+
+This library supports `ConvexHull::GrahamScan` and `ConvexHull::JarvisMarch` inherided from abstract class `ConvexHull::Algorithm`.
+
+It accepts `Array` of one of these:
+
+- `Tuple(Number, Number)`
+- `ConvexHull::Point`
+- Sub-class of `ConvexHull::Point`
+
+And return `Array` of `ConvexHull::Point`.
+
 ```crystal
 require "convex_hull"
 
-# List of points {x, y}
 points = [
-  {-10, 3},
-  {-10, 4},
-  {-7, 8},
-  {-7, 2},
-  {-3, 4},
-  {-2, 2},
-  {7, 3},
-  {9, 5},
-  {9, -7},
-  {5, -10},
-  {7, -8},
-  {5, -4},
-  {5, -5},
-  {4, -6},
-  {2, -7},
-  {1, -8},
-  {-3, -4},
-  {-4, -6},
-  {-9, -5},
+  {-10, 3}, {-10, 4}, {-7, 8}, {-7, 2}, {-3, 4},
+  {-2, 2}, {7, 3}, {9, 5}, {9, -7}, {5, -10},
+  {7, -8}, {5, -4}, {5, -5}, {4, -6}, {2, -7},
+  {1, -8}, {-3, -4}, {-4, -6}, {-9, -5},
 ]
 
-graham_scan = ConvexHull::GrahamScan.new(points)
-# => #<ConvexHull::GrahamScan:0x...
+# or
+#
+# points = [
+#   ConvexHull::Point.new(-10, 3),
+#   ConvexHull::Point.new(-10, 4),
+# ...
+# ]
 
+```
+
+### Convex hull
+
+#### Jarvis march
+
+
+```crystal
+graham_scan = ConvexHull::GrahamScan.new(points)
 graham_scan.map { |point| {point.x, point.y} }
 # => [{-10, 4}, {-10, 3}, {-9, -5}, {5, -10}, {9, -7}, {9, 5}, {-7, 8}]
+```
 
+#### Graham scan
+
+```crystal
 jarvis_march = ConvexHull::JarvisMarch.new(points)
-# => #<ConvexHull::JarvisMarch:0x...
-
 jarvis_march.map { |point| {point.x, point.y} }
 # => [{-10, 4}, {-10, 3}, {-9, -5}, {5, -10}, {9, -7}, {9, 5}, {-7, 8}]
 ```
