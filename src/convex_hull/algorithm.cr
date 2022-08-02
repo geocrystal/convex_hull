@@ -1,5 +1,10 @@
+require "./point"
+
 module ConvexHull
   abstract class Algorithm
+    include Enumerable(ConvexHull::Point)
+    include Iterable(ConvexHull::Point)
+
     getter points : Array(Point)
     getter convex_hull : Array(ConvexHull::Point)
 
@@ -12,8 +17,14 @@ module ConvexHull
 
     private abstract def compute_convex_hull : Array(ConvexHull::Point)
 
-    def to_a
-      @convex_hull.map { |point| {point.x, point.y} }
+    def each(& : ConvexHull::Point ->) : Nil
+      convex_hull.each do |point|
+        yield point
+      end
+    end
+
+    def each
+      EntryIterator(ConvexHull::Point).new(self)
     end
   end
 end

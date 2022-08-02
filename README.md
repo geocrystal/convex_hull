@@ -34,6 +34,7 @@ The following is an example of a convex hull of 19 points.
 ```crystal
 require "convex_hull"
 
+# List of points {x, y}
 points = [
   {-10, 3},
   {-10, 4},
@@ -57,17 +58,17 @@ points = [
 ]
 
 graham_scan = ConvexHull::GrahamScan.new(points)
-# => #<ConvexHull::GrahamScan:0x...
 
-graham_scan.to_a
-# => [{-10, 4}, {-10, 3}, {-9, -5}, {5, -10}, {9, -7}, {9, 5}, {-7, 8}]
+graham_scan.map { |point| {point.x, point.y} }
 
 jarvis_march = ConvexHull::JarvisMarch.new(points)
 # => #<ConvexHull::JarvisMarch:0x...
 
-jarvis_march.to_a
+jarvis_march.map { |point| {point.x, point.y} }
 # => [{-10, 4}, {-10, 3}, {-9, -5}, {5, -10}, {9, -7}, {9, 5}, {-7, 8}]
 ```
+
+The result is an ordered collection of objects of type `ConvexHull::Point`.
 
 ## Contributing
 
