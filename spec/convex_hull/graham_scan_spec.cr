@@ -17,7 +17,7 @@ describe ConvexHull::GrahamScan do
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
     graham_scan = ConvexHull::GrahamScan.new(points)
-    graham_scan.convex_hull.should eq(expected)
+    graham_scan.to_a.should eq(expected)
   end
 
   it "floats" do
@@ -36,7 +36,7 @@ describe ConvexHull::GrahamScan do
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
     graham_scan = ConvexHull::GrahamScan.new(points)
-    graham_scan.convex_hull.should eq(expected)
+    graham_scan.to_a.should eq(expected)
   end
 
   it "should skip colinear from hull" do
@@ -47,7 +47,7 @@ describe ConvexHull::GrahamScan do
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
     graham_scan = ConvexHull::GrahamScan.new(points)
-    graham_scan.convex_hull.should eq(expected)
+    graham_scan.to_a.should eq(expected)
   end
 
   it "hull is empty if less then 3 points" do
@@ -56,6 +56,6 @@ describe ConvexHull::GrahamScan do
     expected = [] of ConvexHull::Point
 
     graham_scan = ConvexHull::GrahamScan.new(points)
-    graham_scan.convex_hull.should eq(expected)
+    graham_scan.to_a.should eq(expected)
   end
 end

@@ -39,11 +39,12 @@ describe ConvexHull::GrahamScan do
 
       graham_scan = ConvexHull::GrahamScan.new(points)
       graham_scan.map { |point| {point.x, point.y} }.should eq(hull)
-      graham_scan.convex_hull.should eq(expected)
+      p! graham_scan.to_a
+      graham_scan.to_a.should eq(expected)
 
       jarvis = ConvexHull::JarvisMarch.new(points)
       jarvis.map { |point| {point.x, point.y} }.should eq(hull)
-      jarvis.convex_hull.should eq(expected)
+      jarvis.to_a.should eq(expected)
     end
   end
 end

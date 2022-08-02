@@ -5,7 +5,7 @@ module ConvexHull
     include Enumerable(Point)
     include Iterable(Point)
 
-    getter convex_hull : Array(Point)
+    @convex_hull : Array(Point)
 
     def initialize(points : Array(Tuple(Int32 | Float64, Int32 | Float64)))
       raise "There must be at least 3 points" if points.size < 3
@@ -26,7 +26,7 @@ module ConvexHull
     private abstract def compute_convex_hull(points) : Array(Point)
 
     def each(& : Point ->) : Nil
-      convex_hull.each do |point|
+      @convex_hull.each do |point|
         yield point
       end
     end

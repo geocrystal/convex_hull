@@ -21,7 +21,7 @@ describe ConvexHull::Point do
       ]
 
       graham_scan = ConvexHull::GrahamScan.new(points)
-      graham_scan.convex_hull.map(&.as(PointWithName).name).should eq(['A', 'F', 'E', 'G'])
+      graham_scan.map(&.as(PointWithName).name).should eq(['A', 'F', 'E', 'G'])
     end
   end
 end

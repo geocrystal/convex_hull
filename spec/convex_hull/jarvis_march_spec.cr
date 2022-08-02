@@ -17,7 +17,7 @@ describe ConvexHull::JarvisMarch do
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
     jarvis = ConvexHull::JarvisMarch.new(points)
-    jarvis.convex_hull.should eq(expected)
+    jarvis.to_a.should eq(expected)
   end
 
   it "floats" do
@@ -36,7 +36,7 @@ describe ConvexHull::JarvisMarch do
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
     jarvis = ConvexHull::JarvisMarch.new(points)
-    jarvis.convex_hull.should eq(expected)
+    jarvis.to_a.should eq(expected)
   end
 
   it "should skip colinear from hull" do
@@ -47,7 +47,7 @@ describe ConvexHull::JarvisMarch do
     ].map { |point| ConvexHull::Point.new(point[0], point[1]) }
 
     jarvis = ConvexHull::JarvisMarch.new(points)
-    jarvis.convex_hull.should eq(expected)
+    jarvis.to_a.should eq(expected)
   end
 
   it "hull is empty if less then 3 points" do
@@ -56,6 +56,6 @@ describe ConvexHull::JarvisMarch do
     expected = [] of ConvexHull::Point
 
     jarvis = ConvexHull::JarvisMarch.new(points)
-    jarvis.convex_hull.should eq(expected)
+    jarvis.to_a.should eq(expected)
   end
 end
