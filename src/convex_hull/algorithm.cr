@@ -1,5 +1,3 @@
-require "./point"
-
 module ConvexHull
   abstract class Algorithm
     include Enumerable(Point)
@@ -7,7 +5,7 @@ module ConvexHull
 
     @convex_hull : Array(Point)
 
-    def initialize(points : Array(Tuple(Int32 | Float64, Int32 | Float64)))
+    def initialize(points : Array(Tuple(Int32 | Float32 | Float64, Int32 | Float32 | Float64)))
       raise "There must be at least 3 points" if points.size < 3
 
       points = points.uniq.map { |p| Point.new(p[0], p[1]) }.sort!

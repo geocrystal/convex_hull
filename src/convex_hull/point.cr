@@ -5,7 +5,7 @@ module ConvexHull
     getter :x
     getter :y
 
-    def initialize(@x : Number, @y : Number)
+    def initialize(@x : Int32 | Float32 | Float64, @y : Int32 | Float32 | Float64)
     end
 
     def <=>(other : Point)
