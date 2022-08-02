@@ -58,8 +58,10 @@ points = [
 ]
 
 graham_scan = ConvexHull::GrahamScan.new(points)
+# => #<ConvexHull::GrahamScan:0x...
 
 graham_scan.map { |point| {point.x, point.y} }
+# => [{-10, 4}, {-10, 3}, {-9, -5}, {5, -10}, {9, -7}, {9, 5}, {-7, 8}]
 
 jarvis_march = ConvexHull::JarvisMarch.new(points)
 # => #<ConvexHull::JarvisMarch:0x...
