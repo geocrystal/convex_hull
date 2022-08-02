@@ -2,29 +2,37 @@ require "./point"
 
 module ConvexHull
   abstract class Algorithm
-    include Enumerable(ConvexHull::Point)
-    include Iterable(ConvexHull::Point)
+    include Enumerable(Point)
+    include Iterable(Point)
 
-    getter points : Array(Point)
-    getter convex_hull : Array(ConvexHull::Point)
+    getter convex_hull : Array(Point)
 
-    def initialize(points : Array(Tuple(Number, Number)))
+    def initialize(points : Array(Tuple(Int32 | Float64, Int32 | Float64)))
       raise "There must be at least 3 points" if points.size < 3
 
-      @points = points.uniq.map { |p| Point.new(p[0], p[1]) }.sort!
-      @convex_hull = compute_convex_hull
+      points = points.uniq.map { |p| Point.new(p[0], p[1]) }.sort!
+
+      @convex_hull = compute_convex_hull(points)
     end
 
-    private abstract def compute_convex_hull : Array(ConvexHull::Point)
+    def initialize(points : Array(Point))
+      raise "There must be at least 3 points" if points.size < 3
 
-    def each(& : ConvexHull::Point ->) : Nil
+      points = points.sort
+
+      @convex_hull = compute_convex_hull(points)
+    end
+
+    private abstract def compute_convex_hull(points) : Array(Point)
+
+    def each(& : Point ->) : Nil
       convex_hull.each do |point|
         yield point
       end
     end
 
     def each
-      EntryIterator(ConvexHull::Point).new(self)
+      EntryIterator(Point).new(self)
     end
   end
 end

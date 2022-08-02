@@ -1,7 +1,7 @@
 module ConvexHull
   class JarvisMarch < Algorithm
-    private def compute_convex_hull : Array(ConvexHull::Point)
-      n = @points.size
+    private def compute_convex_hull(points) : Array(Point)
+      n = points.size
 
       hull = [] of Point
 
@@ -11,7 +11,7 @@ module ConvexHull
       l = p = q = 0
 
       loop do
-        point = @points[p]
+        point = points[p]
 
         if hull.size > 1 && orientation(hull[-2], hull[-1], point) == 0
           hull.pop
@@ -42,6 +42,7 @@ module ConvexHull
       end
 
       return [] of Point if hull.size < 3
+
       hull
     end
 
