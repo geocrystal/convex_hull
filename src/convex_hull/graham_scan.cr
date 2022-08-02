@@ -21,7 +21,7 @@ module ConvexHull
         upper.push(p)
       end
 
-      hull = lower[0...-1] + upper[0...-1]
+      hull = lower[...-1] + upper[...-1]
 
       return [] of Point if hull.size < 3
 
