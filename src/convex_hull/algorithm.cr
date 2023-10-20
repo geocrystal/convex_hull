@@ -3,7 +3,7 @@ module ConvexHull
     include Enumerable(Point)
     include Iterable(Point)
 
-    @convex_hull : Array(Point)
+    getter convex_hull : Array(Point)
 
     def initialize(points : Array(Tuple(Int32 | Float32 | Float64, Int32 | Float32 | Float64)))
       raise "There must be at least 3 points" if points.size < 3
