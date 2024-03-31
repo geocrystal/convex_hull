@@ -3,22 +3,22 @@ module ConvexHull
     private def convex_hull(points) : Array(Point)
       lower = Array(Point).new
 
-      points.each do |p|
-        while lower.size > 1 && cross(lower[-2], lower[-1], p) <= 0
+      points.each do |point|
+        while lower.size > 1 && cross(lower[-2], lower[-1], point) <= 0
           lower.pop
         end
 
-        lower.push(p)
+        lower.push(point)
       end
 
       upper = Array(Point).new
 
-      points.reverse_each do |p|
-        while upper.size > 1 && cross(upper[-2], upper[-1], p) <= 0
+      points.reverse_each do |point|
+        while upper.size > 1 && cross(upper[-2], upper[-1], point) <= 0
           upper.pop
         end
 
-        upper.push(p)
+        upper.push(point)
       end
 
       hull = lower[...-1] + upper[...-1]
